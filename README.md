@@ -7,8 +7,10 @@ To use it, create a `.coderabbit.yaml` file in the project root and add this:
 
 ```yaml
 remote_config:
-  url: "https://raw.githubusercontent.com/ivuorinen/coderabbit/refs/heads/main/.coderabbit.yaml"
+  url: "https://raw.githubusercontent.com/ivuorinen/coderabbit/refs/heads/main/coderabbit.yaml"
 ```
+
+You can see the full configuration here: [coderabbit.yaml](coderabbit.yaml)
 
 This way the repository is always using the latest configuration.
 
