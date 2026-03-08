@@ -68,15 +68,37 @@ reviews:
       instructions: >-
         When a project contains a `docs/` directory:
         1. Consider the files in the `docs/` directory tree the core/main/in-depth
-           documentation of the project. Also consider the 'docs/**.md' files the
-           second place to look for project documentation after the 'README.md' file.
+        documentation of the project. Also consider the 'docs/**.md' files the
+        second place to look for project documentation after the 'README.md' file.
         2. When reviewing the documentation files (e.g. `docs/**.md`),
-           they should additionally be linted with help from the tool `markdownlint`, pointing out any issues.
+        they should additionally be linted with help from the tool `markdownlint`, pointing out any issues.
         3. When reviewing the documentation files in `docs/` directory, they should
-           additionally be linted with help from the tool `languagetool`, pointing out any issues.
+        additionally be linted with help from the tool `languagetool`, pointing out any issues.
         4. Focus on grammar, spelling, and punctuation.
         5. Also consider readability and clarity of contents.
         6. Avoid gender-specific language and use the imperative form.
+    - path: "docs/plans/**"
+      instructions: >-
+        These are historical design and planning documents. They may contain
+        outdated information and do not reflect current implementation.
+        Do not enforce current coding standards or suggest updates to align
+        with current practices. Focus only on grammar, spelling, and
+        readability if changes are being reviewed.
+    - path: "**/*.{test,spec}.*"
+      instructions: >-
+        These are test files. Focus on test coverage completeness,
+        assertion quality, and avoiding flaky test patterns.
+        Some duplication in tests is acceptable for readability —
+        do not enforce DRY as aggressively as in production code.
+    - path: "**/Dockerfile*"
+      instructions: >-
+        Review Dockerfiles for security best practices (non-root user,
+        minimal base images, no secrets baked into layers), multi-stage
+        build opportunities, and layer caching efficiency.
+    - path: "**/*.{json,yaml,yml,toml}"
+      instructions: >-
+        Configuration files: verify valid structure, ensure no hardcoded
+        secrets or credentials, and check consistency with project conventions.
   abort_on_close: true
   disable_cache: false
   auto_review:
@@ -222,4 +244,3 @@ code_generation:
     path_instructions: []
   unit_tests:
     path_instructions: []
-

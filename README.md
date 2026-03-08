@@ -21,4 +21,3 @@ This way the repository is always using the latest configuration.
 - [YouTube Channel](https://www.youtube.com/@CodeRabbitAI) - Official YouTube channel with tutorials and updates.
 - [AI Code Reviewer Examples](https://www.coderabbit.ai/blog/how-to-use-an-ai-code-reviewer-on-github-in-4-examples) - Four practical examples of using CodeRabbit.
 - [OpenAPI Documentation](https://api.coderabbit.ai/api/swagger/) - Complete Swagger documentation for CodeRabbit's REST API endpoints.
-

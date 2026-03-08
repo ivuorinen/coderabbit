@@ -1,0 +1,35 @@
+---
+repos:
+  # Standard hooks: basic file hygiene
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-yaml
+        args: ['--allow-multiple-documents']
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+
+  # YAML linting
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+        args: [--strict]
+
+  # JSON Schema validation against CodeRabbit's official schema
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.37.0
+    hooks:
+      - id: check-jsonschema
+        name: Validate coderabbit.yaml against schema
+        files: ^coderabbit\.yaml$
+        args:
+          - '--schemafile'
+          - 'https://storage.googleapis.com/coderabbit_public_assets/schema.v2.json'
+
+  # EditorConfig compliance
+  - repo: https://github.com/editorconfig-checker/editorconfig-checker.python
+    rev: '3.6.1'
+    hooks:
+      - id: editorconfig-checker
