@@ -84,6 +84,14 @@ reviews:
         Do not enforce current coding standards or suggest updates to align
         with current practices. Focus only on grammar, spelling, and
         readability if changes are being reviewed.
+    - path: ".serena/**"
+      instructions: >-
+        .serena directory contains Serena MCP tool configuration and
+        AI-generated project memories. These files are maintained by
+        tooling and do not represent hand-written source code.
+        Do not enforce coding standards or suggest refactoring. Focus
+        only on grammar, spelling, and readability if memory files
+        are being reviewed. Do not review cache files.
     - path: "**/*.{test,spec}.*"
       instructions: >-
         These are test files. Focus on test coverage completeness,
