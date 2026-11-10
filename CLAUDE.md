@@ -20,6 +20,10 @@ check-jsonschema --schemafile \
 
 CI runs `pre-commit/action@v3.0.1` on push/PR to `main`.
 
+Schema validation does not reject unknown keys under `reviews`. After changing a key name, run
+`@coderabbitai configuration` on a pull request in a consuming repository and confirm the
+resolved YAML contains the setting.
+
 ## Architecture
 
 ```
@@ -33,7 +37,9 @@ coderabbit.yaml          # Main config — schema.v2.json validated
 Other repos consume this config by adding to their `.coderabbit.yaml`:
 ```yaml
 remote_config:
-  url: "https://raw.githubusercontent.com/ivuorinen/coderabbit/refs/heads/main/coderabbit.yaml"
+  repository: "coderabbit"
+  ref: "main"
+  path: "coderabbit.yaml"
 ```
 
 ## Conventions
