@@ -23,8 +23,8 @@ CI runs `pre-commit/action@v3.0.1` on push/PR to `main`.
 Schema validation does not reject unknown keys under `reviews`. Before merging a key name change,
 point the `remote_config.ref` of a test consuming repository at your branch, run
 `@coderabbitai configuration` on a pull request there, and confirm the setting shows the intended
-value with a source other than defaults. The resolved YAML lists every default, so a misspelled key
-still leaves the correct key visible at its default value.
+value with the shared configuration as its source. A value from defaults, UI settings, or an
+override does not prove that the shared key is spelled correctly.
 
 ## Architecture
 
