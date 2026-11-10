@@ -9,7 +9,8 @@ the `main` branch, so a merged change applies to them without further steps.
 `.editorconfig` and `.yamllint.yaml` define the formatting rules:
 
 - Use UTF-8, LF line endings, 2-space indentation, and a final newline.
-- Trim trailing whitespace, except in Markdown files.
+- Trim trailing whitespace in every file, Markdown included. `.editorconfig` exempts Markdown,
+  but the `trailing-whitespace` pre-commit hook still removes it.
 - Start YAML files with the `---` document marker.
 - Keep lines to 120 characters or fewer.
 
@@ -32,9 +33,11 @@ check-jsonschema --schemafile \
   coderabbit.yaml
 ```
 
-Schema validation does not reject unknown keys under `reviews`. After changing a key name, run
-`@coderabbitai configuration` on a pull request in a consuming repository and confirm the
-resolved YAML contains the setting.
+Schema validation does not reject unknown keys under `reviews`. Before merging a key name change,
+point the `remote_config.ref` of a test consuming repository at your branch, run
+`@coderabbitai configuration` on a pull request there, and confirm the setting shows the intended
+value with a source other than defaults. The resolved YAML lists every default, so a misspelled key
+still leaves the correct key visible at its default value.
 
 ## Commit convention
 

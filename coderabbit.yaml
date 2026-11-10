@@ -8,6 +8,8 @@ tone_instructions: >-
 early_access: true
 reviews:
   auto_approvals:
+    # max_merge_risk is intentionally unset: a limit withholds approval above its level and
+    # whenever no Merge Risk assessment covers the latest commit.
     enabled: true
     allow_author_approval: false
   high_level_summary_in_walkthrough: true
