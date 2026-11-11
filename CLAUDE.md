@@ -20,6 +20,12 @@ check-jsonschema --schemafile \
 
 CI runs `pre-commit/action@v3.0.1` on push/PR to `main`.
 
+Schema validation does not reject unknown keys under `reviews`. Before merging a key name change,
+point the `remote_config.ref` of a test consuming repository at your branch, run
+`@coderabbitai configuration` on a pull request there, and confirm the setting shows the intended
+value with the shared configuration as its source. A value from defaults, UI settings, or an
+override does not prove that the shared key is spelled correctly.
+
 ## Architecture
 
 ```
@@ -33,7 +39,9 @@ coderabbit.yaml          # Main config — schema.v2.json validated
 Other repos consume this config by adding to their `.coderabbit.yaml`:
 ```yaml
 remote_config:
-  url: "https://raw.githubusercontent.com/ivuorinen/coderabbit/refs/heads/main/coderabbit.yaml"
+  repository: "coderabbit"
+  ref: "main"
+  path: "coderabbit.yaml"
 ```
 
 ## Conventions
